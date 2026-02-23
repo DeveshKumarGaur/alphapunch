@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Roadmap — Alpha Punch $ALPUNCH</title>
+  <link rel="stylesheet" href="../css/main.css"/>
+  <style>
+    .page-hero {
+      background: radial-gradient(ellipse at 20% 60%, #120500 0%, var(--black) 60%);
+      border-bottom: 2px solid var(--border);
+      padding: 6rem 0 4rem;
+      text-align: center;
+    }
+    .roadmap-section { background: var(--black); }
+    .roadmap-timeline { position: relative; margin-top: 4rem; }
+    .roadmap-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--yellow), var(--orange), var(--red), #333);
+    }
+    .phase {
+      display: grid;
+      grid-template-columns: 1fr 60px 1fr;
+      gap: 0;
+      align-items: flex-start;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    .phase-left { padding-right: 3rem; text-align: right; }
+    .phase-right { padding-left: 3rem; }
+    .phase.right .phase-left { order: 3; text-align: left; padding-left: 3rem; padding-right: 0; }
+    .phase.right .phase-center { order: 2; }
+    .phase.right .phase-right { order: 1; text-align: right; padding-right: 3rem; padding-left: 0; }
+    .phase-center { display: flex; flex-direction: column; align-items: center; }
+    .phase-dot {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: var(--card);
+      border: 3px solid var(--yellow);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      position: relative;
+      z-index: 2;
+      flex-shrink: 0;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .phase:hover .phase-dot { background: #1a1500; box-shadow: 0 0 30px rgba(255,230,0,0.3); }
+    .phase.done .phase-dot { background: #1a1500; border-color: var(--green); box-shadow: 0 0 20px rgba(0,255,136,0.2); }
+    .phase-card {
+      background: var(--card);
+      border: 2px solid var(--border);
+      padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .phase:hover .phase-card { border-color: var(--yellow); }
+    .phase.done .phase-card { border-color: #1a3a20; }
+    .phase-label {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: var(--orange);
+      margin-bottom: 0.3rem;
+    }
+    .phase.done .phase-label { color: var(--green); }
+    .phase-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+    }
+    .phase-items { list-style: none; }
+    .phase-items li {
+      font-size: 0.75rem;
+      color: #777;
+      padding: 0.35rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      text-align: left;
+    }
+    .phase.right .phase-items li { flex-direction: row-reverse; text-align: right; }
+    .phase-items li::before { content: '▸'; color: var(--orange); flex-shrink: 0; }
+    .phase.right .phase-items li::before { content: '◂'; }
+    .phase.done .phase-items li { color: #aaa; }
+    .phase.done .phase-items li::before { content: '✓'; color: var(--green); }
+    .phase.right.done .phase-items li::before { content: '✓'; }
+    .done-badge {
+      display: inline-block;
+      background: #0a2010;
+      border: 1px solid var(--green);
+      color: var(--green);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      padding: 0.2rem 0.7rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .vision-section { background: var(--dark); border-top: 2px solid var(--border); }
+    .vision-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .vision-card {
+      background: var(--card); border: 2px solid var(--border);
+      padding: 2rem; text-align: center;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .vision-card:hover { border-color: var(--yellow); transform: translateY(-5px); }
+    .vision-card .v-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+    .vision-card h4 { font-family: var(--font-heading); font-size: 1.1rem; letter-spacing: 0.1em; color: var(--yellow); margin-bottom: 0.5rem; }
+    .vision-card p { font-size: 0.72rem; color: #666; line-height: 1.7; }
+
+    @media (max-width: 800px) {
+      .roadmap-timeline::before { left: 30px; transform: none; }
+      .phase { grid-template-columns: 60px 1fr; }
+      .phase-left { display: none; }
+      .phase.right .phase-left { display: none; }
+      .phase.right .phase-center { order: 1; }
+      .phase.right .phase-right { order: 2; text-align: left; padding-right: 0; padding-left: 1.5rem; }
+      .phase-right { padding-left: 1.5rem; }
+      .phase.right .phase-items li { flex-direction: row; text-align: left; }
+      .phase.right .phase-items li::before { content: '▸'; }
+      .phase.right.done .phase-items li::before { content: '✓'; }
+      .vision-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="marquee-bar">
+    <div class="marquee-track">
+      <span>🥊 ALPHA PUNCH</span><span>•</span><span>THE HARDEST HITTING COIN IN THE JUNGLE</span><span>•</span>
+      <span>🐒 BUY $ALPUNCH</span><span>•</span><span>TO THE MOON</span><span>•</span>
+      <span>APE IN NOW</span><span>•</span><span>ZERO TAX</span><span>•</span><span>LP BURNED 🔥</span><span>•</span>
+      <span>🥊 ALPHA PUNCH</span><span>•</span><span>THE HARDEST HITTING COIN IN THE JUNGLE</span><span>•</span>
+      <span>🐒 BUY $ALPUNCH</span><span>•</span><span>TO THE MOON</span><span>•</span>
+      <span>APE IN NOW</span><span>•</span><span>ZERO TAX</span><span>•</span><span>LP BURNED 🔥</span><span>•</span>
+    </div>
+  </div>
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">🥊 AlphaPunch</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="tokenomics.html">Tokenomics</a></li>
+      <li><a href="howtobuy.html">How to Buy</a></li>
+      <li><a href="roadmap.html">Roadmap</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="#" class="nav-cta">🥊 Buy Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="../index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="tokenomics.html">Tokenomics</a>
+    <a href="howtobuy.html">How to Buy</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="community.html">Community</a>
+    <a href="#" class="btn btn-primary" style="font-size:1.4rem">🥊 Buy $ALPUNCH</a>
+  </div>
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-tag" style="display:block">// The Battle Plan</span>
+      <h1 class="section-title" style="animation:title-slam 0.6s both">ROADMAP</h1>
+      <div class="section-divider center"></div>
+      <p style="color:var(--muted);font-size:0.82rem;max-width:500px;margin:0 auto">From jungle floor to the moon — here's every punch Alpha Punch is throwing.</p>
+    </div>
+  </div>
+
+  <section class="roadmap-section">
+    <div class="container">
+      <div class="roadmap-timeline">
+
+        <!-- Phase 1 — LEFT -->
+        <div class="phase done reveal">
+          <div class="phase-left">
+            <div class="phase-card">
+              <div class="done-badge">✅ COMPLETE</div>
+              <div class="phase-label">Phase 1 — The Awakening</div>
+              <div class="phase-title">ORIGIN STORY</div>
+              <ul class="phase-items">
+                <li>Token concept & lore created</li>
+                <li>Smart contract written & audited</li>
+                <li>Contract deployed & renounced</li>
+                <li>Liquidity added & LP burned</li>
+                <li>Website launched</li>
+                <li>Twitter & Telegram created</li>
+              </ul>
+            </div>
+          </div>
+          <div class="phase-center">
+            <div class="phase-dot">🥚</div>
+          </div>
+          <div class="phase-right"></div>
+        </div>
+
+        <!-- Phase 2 — RIGHT -->
+        <div class="phase right reveal">
+          <div class="phase-left"></div>
+          <div class="phase-center">
+            <div class="phase-dot">🥊</div>
+          </div>
+          <div class="phase-right">
+            <div class="phase-card">
+              <div class="phase-label">Phase 2 — First Punch</div>
+              <div class="phase-title">COMMUNITY IGNITION</div>
+              <ul class="phase-items">
+                <li>DEX listing & trading live</li>
+                <li>CoinGecko listing submission</li>
+                <li>CoinMarketCap submission</li>
+                <li>1,000 holder milestone</li>
+                <li>Viral meme campaign launch</li>
+                <li>Influencer partnerships</li>
+                <li>First Twitter Space event</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 3 — LEFT -->
+        <div class="phase reveal">
+          <div class="phase-left">
+            <div class="phase-card">
+              <div class="phase-label">Phase 3 — Going Ape</div>
+              <div class="phase-title">MASS ADOPTION</div>
+              <ul class="phase-items">
+                <li>Tier-2 CEX listing secured</li>
+                <li>5,000 holder milestone</li>
+                <li>Alpha Punch NFT collection reveal</li>
+                <li>Official merch store launch</li>
+                <li>Cross-chain expansion</li>
+                <li>Major crypto media coverage</li>
+              </ul>
+            </div>
+          </div>
+          <div class="phase-center">
+            <div class="phase-dot">🔥</div>
+          </div>
+          <div class="phase-right"></div>
+        </div>
+
+        <!-- Phase 4 — RIGHT -->
+        <div class="phase right reveal">
+          <div class="phase-left"></div>
+          <div class="phase-center">
+            <div class="phase-dot">🌕</div>
+          </div>
+          <div class="phase-right">
+            <div class="phase-card">
+              <div class="phase-label">Phase 4 — Moon Mission</div>
+              <div class="phase-title">KING OF THE JUNGLE</div>
+              <ul class="phase-items">
+                <li>Tier-1 CEX listing (Binance, Coinbase)</li>
+                <li>10,000+ holder milestone</li>
+                <li>Alpha Punch x Major brand collab</li>
+                <li>DAO governance launch</li>
+                <li>$ALPUNCH staking & rewards</li>
+                <li>The jungle belongs to us 🥊</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="vision-section">
+    <div class="container">
+      <span class="section-tag reveal">// The Big Picture</span>
+      <h2 class="section-title reveal">THE VISION</h2>
+      <div class="section-divider reveal"></div>
+      <div class="vision-grid">
+        <div class="vision-card reveal">
+          <span class="v-icon">🌐</span>
+          <h4>Global Recognition</h4>
+          <p>Alpha Punch becomes a household name in crypto. The meme that went viral becomes the coin that went global.</p>
+        </div>
+        <div class="vision-card reveal reveal-delay-1">
+          <span class="v-icon">🏛️</span>
+          <h4>Community DAO</h4>
+          <p>Power transferred to the community via DAO governance. The apes decide the future of $ALPUNCH together.</p>
+        </div>
+        <div class="vision-card reveal reveal-delay-2">
+          <span class="v-icon">🎮</span>
+          <h4>Alpha Punch Universe</h4>
+          <p>NFTs, games, merch, and collabs. $ALPUNCH becomes more than a coin — it becomes a culture.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:3.5rem" class="reveal">
+        <a href="howtobuy.html" class="btn btn-primary">🥊 Join the Mission</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="footer-logo">🥊 ALPHAPUNCH</a>
+          <p>The hardest hitting memecoin in the jungle. Built by degens, for degens. Zero tax. LP burned. Let's go.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="tokenomics.html">Tokenomics</a></li>
+            <li><a href="howtobuy.html">How to Buy</a></li>
+            <li><a href="roadmap.html">Roadmap</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="#">Twitter / X</a></li>
+            <li><a href="#">Telegram</a></li>
+            <li><a href="#">Discord</a></li>
+            <li><a href="community.html">All Links</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contract</h4>
+          <ul>
+            <li><a href="#">DexScreener</a></li>
+            <li><a href="#">CoinGecko</a></li>
+            <li><a href="#">CoinMarketCap</a></li>
+            <li><a href="#">Audit Report</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>$ALPUNCH is a meme coin with no intrinsic value or expectation of financial return. Not financial advice. DYOR. © 2025 Alpha Punch.</p>
+        <div class="footer-social">
+          <a href="#">🐦</a><a href="#">✈️</a><a href="#">💬</a><a href="#">📊</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

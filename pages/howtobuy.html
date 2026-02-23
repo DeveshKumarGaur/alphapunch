@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How to Buy — Alpha Punch $ALPUNCH</title>
+  <link rel="stylesheet" href="../css/main.css"/>
+  <style>
+    .page-hero {
+      background: radial-gradient(ellipse at 50% 80%, #100800 0%, var(--black) 60%);
+      border-bottom: 2px solid var(--border);
+      padding: 6rem 0 4rem;
+      text-align: center;
+    }
+    /* STEPS */
+    .steps-section { background: var(--black); }
+    .steps-list { display: flex; flex-direction: column; gap: 0; margin-top: 3rem; }
+    .step-item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 2.5rem;
+      align-items: flex-start;
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .step-item:last-child { border-bottom: none; }
+    .step-num-wrap { text-align: center; }
+    .step-num-big {
+      font-family: var(--font-display);
+      font-size: 5rem;
+      color: rgba(255,230,0,0.12);
+      line-height: 1;
+      display: block;
+    }
+    .step-icon-circle {
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      background: var(--card);
+      border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .step-item:hover .step-icon-circle { border-color: var(--yellow); background: #1a1500; }
+    .step-connector {
+      width: 2px;
+      background: linear-gradient(to bottom, var(--yellow), transparent);
+      height: 40px;
+      margin: 0 auto;
+    }
+    .step-content { padding-top: 0.5rem; }
+    .step-content h3 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      letter-spacing: 0.1em;
+      color: var(--yellow);
+      margin-bottom: 1rem;
+    }
+    .step-content p { font-size: 0.8rem; color: #888; line-height: 1.9; margin-bottom: 1rem; }
+    .step-content p strong { color: var(--white); }
+    .step-content a { color: var(--orange); text-decoration: none; }
+    .step-content a:hover { text-decoration: underline; }
+    .step-badge {
+      display: inline-block;
+      background: #1a1500;
+      border: 1px solid var(--yellow);
+      color: var(--yellow);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      margin-bottom: 1rem;
+    }
+    .tip-box {
+      background: #0f1a0f;
+      border: 1px solid #1a3a1a;
+      border-left: 4px solid var(--green);
+      padding: 1rem 1.5rem;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: #7a9a7a;
+      line-height: 1.7;
+    }
+    .tip-box strong { color: var(--green); }
+
+    /* SLIPPAGE BOX */
+    .slippage-section { background: var(--dark); border-top: 2px solid var(--border); }
+    .slippage-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .slippage-card {
+      background: var(--card);
+      border: 2px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+    .slippage-card:hover { border-color: var(--yellow); }
+    .slippage-card .pct {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--yellow);
+      display: block;
+    }
+    .slippage-card .lbl { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.15em; }
+    .slippage-card p { font-size: 0.72rem; color: #666; margin-top: 0.8rem; line-height: 1.7; }
+
+    /* CTA FINAL */
+    .cta-section { background: var(--black); border-top: 2px solid var(--border); text-align: center; }
+    .ca-big {
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-left: 6px solid var(--yellow);
+      padding: 1.5rem 2rem;
+      margin: 2rem auto;
+      max-width: 600px;
+      text-align: left;
+    }
+    .ca-big .lbl { font-size: 0.62rem; letter-spacing: 0.2em; color: var(--muted); margin-bottom: 8px; }
+    .ca-big .addr { font-size: 0.9rem; color: var(--green); word-break: break-all; cursor: pointer; }
+    .ca-big .addr:hover { color: var(--yellow); }
+
+    @media (max-width: 700px) {
+      .step-item { grid-template-columns: 1fr; }
+      .step-num-wrap { display: none; }
+      .slippage-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="marquee-bar">
+    <div class="marquee-track">
+      <span>🥊 ALPHA PUNCH</span><span>•</span><span>THE HARDEST HITTING COIN IN THE JUNGLE</span><span>•</span>
+      <span>🐒 BUY $ALPUNCH</span><span>•</span><span>TO THE MOON</span><span>•</span>
+      <span>APE IN NOW</span><span>•</span><span>ZERO TAX</span><span>•</span><span>LP BURNED 🔥</span><span>•</span>
+      <span>🥊 ALPHA PUNCH</span><span>•</span><span>THE HARDEST HITTING COIN IN THE JUNGLE</span><span>•</span>
+      <span>🐒 BUY $ALPUNCH</span><span>•</span><span>TO THE MOON</span><span>•</span>
+      <span>APE IN NOW</span><span>•</span><span>ZERO TAX</span><span>•</span><span>LP BURNED 🔥</span><span>•</span>
+    </div>
+  </div>
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">🥊 AlphaPunch</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="tokenomics.html">Tokenomics</a></li>
+      <li><a href="howtobuy.html">How to Buy</a></li>
+      <li><a href="roadmap.html">Roadmap</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="#" class="nav-cta">🥊 Buy Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="../index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="tokenomics.html">Tokenomics</a>
+    <a href="howtobuy.html">How to Buy</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="community.html">Community</a>
+    <a href="#" class="btn btn-primary" style="font-size:1.4rem">🥊 Buy $ALPUNCH</a>
+  </div>
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-tag" style="display:block">// Ape In, It's Easy</span>
+      <h1 class="section-title" style="animation:title-slam 0.6s both">HOW TO BUY<br>$ALPUNCH</h1>
+      <div class="section-divider center"></div>
+      <p style="color:var(--muted);font-size:0.82rem">4 simple steps. 5 minutes. Welcome to the jungle.</p>
+    </div>
+  </div>
+
+  <section class="steps-section">
+    <div class="container">
+      <div class="steps-list">
+
+        <div class="step-item reveal">
+          <div class="step-num-wrap">
+            <span class="step-num-big">01</span>
+            <div class="step-icon-circle">👛</div>
+            <div class="step-connector"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-badge">Step 1</div>
+            <h3>Get a Crypto Wallet</h3>
+            <p>You need a Web3 wallet to hold and swap $ALPUNCH. The most popular option is <strong><a href="https://metamask.io" target="_blank">MetaMask</a></strong> — available as a browser extension or mobile app. Alternatively use <strong>Phantom, Trust Wallet, or Coinbase Wallet</strong>.</p>
+            <p>Once installed, create a new wallet. <strong>Write down your 12-word seed phrase on paper and store it safely</strong> — this is the only way to recover your wallet. Never share it with anyone.</p>
+            <div class="tip-box"><strong>💡 Pro Tip:</strong> Never type your seed phrase into any website. Legitimate apps will never ask for it. Anyone who does is a scammer.</div>
+          </div>
+        </div>
+
+        <div class="step-item reveal">
+          <div class="step-num-wrap">
+            <span class="step-num-big">02</span>
+            <div class="step-icon-circle">💰</div>
+            <div class="step-connector"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-badge">Step 2</div>
+            <h3>Buy ETH (or SOL)</h3>
+            <p>You'll need the native blockchain token to swap for $ALPUNCH. Buy <strong>ETH</strong> (Ethereum) from a centralized exchange like <a href="https://coinbase.com" target="_blank">Coinbase</a>, <a href="https://binance.com" target="_blank">Binance</a>, or <a href="https://kraken.com" target="_blank">Kraken</a>.</p>
+            <p>Once purchased, <strong>withdraw your ETH to your wallet address</strong>. Copy your wallet address from MetaMask and paste it as the withdrawal destination on the exchange.</p>
+            <div class="tip-box"><strong>💡 Pro Tip:</strong> Always send a small test transaction first before sending a large amount. ETH transactions are irreversible.</div>
+          </div>
+        </div>
+
+        <div class="step-item reveal">
+          <div class="step-num-wrap">
+            <span class="step-num-big">03</span>
+            <div class="step-icon-circle">🔄</div>
+            <div class="step-connector"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-badge">Step 3</div>
+            <h3>Go to the DEX & Connect</h3>
+            <p>Head to the official DEX (decentralized exchange) where $ALPUNCH is listed. Click <strong>"Connect Wallet"</strong> and approve the connection request in your wallet popup.</p>
+            <p>Once connected, find the swap interface. In the "You receive" field, search for <strong>$ALPUNCH</strong> or paste the contract address directly to avoid fakes:</p>
+            <div class="ca-big">
+              <div class="lbl">Official Contract Address — Click to Copy</div>
+              <div class="addr" data-copy data-address="0x000000000000000000ALPUNCH">0x0000000000000000000000ALPUNCH 📋</div>
+            </div>
+            <div class="tip-box"><strong>⚠️ Warning:</strong> Always use the official contract address from this site or our official Telegram/Twitter. Fake tokens use similar names to steal your funds.</div>
+          </div>
+        </div>
+
+        <div class="step-item reveal">
+          <div class="step-num-wrap">
+            <span class="step-num-big">04</span>
+            <div class="step-icon-circle">🥊</div>
+          </div>
+          <div class="step-content">
+            <div class="step-badge">Step 4</div>
+            <h3>Swap & HODL</h3>
+            <p>Enter the amount of ETH you want to swap for $ALPUNCH. Set your slippage tolerance (see below), then hit <strong>Swap</strong>. Approve the transaction in your wallet and you're in.</p>
+            <p>$ALPUNCH is now in your wallet. <strong>Welcome to the Alpha Punch army.</strong> Now hold tight, spread the word, and let the monkey do its thing. 🥊🌕</p>
+            <div class="tip-box"><strong>💡 Pro Tip:</strong> Add the contract address to your wallet as a custom token if $ALPUNCH doesn't appear automatically after the swap.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="slippage-section">
+    <div class="container">
+      <span class="section-tag reveal">// Slippage Settings</span>
+      <h2 class="section-title reveal">SET YOUR SLIPPAGE</h2>
+      <div class="section-divider reveal"></div>
+      <p class="reveal" style="color:var(--muted);font-size:0.8rem;max-width:600px;margin-bottom:0.5rem">Since $ALPUNCH has <strong style="color:var(--yellow)">0% tax</strong>, you can set slippage very low. Adjust based on network conditions.</p>
+      <div class="slippage-grid reveal">
+        <div class="slippage-card">
+          <span class="pct">0.5%</span>
+          <div class="lbl">Low Traffic</div>
+          <p>Network is quiet. Use when gas fees are low and there's low volatility. Cleanest execution.</p>
+        </div>
+        <div class="slippage-card" style="border-color:var(--yellow)">
+          <span class="pct">1–3%</span>
+          <div class="lbl">Recommended ⭐</div>
+          <p>The sweet spot. Enough to get your transaction through in most conditions without overpaying.</p>
+        </div>
+        <div class="slippage-card">
+          <span class="pct">5%+</span>
+          <div class="lbl">High Traffic</div>
+          <p>Network congestion or high volatility. Use when transactions keep failing at lower settings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container reveal">
+      <h2 class="section-title">READY TO APE IN?</h2>
+      <div class="section-divider center"></div>
+      <p style="color:var(--muted);font-size:0.82rem;margin-bottom:2rem">The jungle is waiting. Alpha Punch doesn't wait for anyone.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="#" class="btn btn-primary" style="font-size:1.3rem;padding:1.2rem 3rem">🥊 Buy $ALPUNCH Now</a>
+        <a href="community.html" class="btn btn-secondary">Join the Community</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="footer-logo">🥊 ALPHAPUNCH</a>
+          <p>The hardest hitting memecoin in the jungle. Built by degens, for degens. Zero tax. LP burned. Let's go.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="tokenomics.html">Tokenomics</a></li>
+            <li><a href="howtobuy.html">How to Buy</a></li>
+            <li><a href="roadmap.html">Roadmap</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="#">Twitter / X</a></li>
+            <li><a href="#">Telegram</a></li>
+            <li><a href="#">Discord</a></li>
+            <li><a href="community.html">All Links</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contract</h4>
+          <ul>
+            <li><a href="#">DexScreener</a></li>
+            <li><a href="#">CoinGecko</a></li>
+            <li><a href="#">CoinMarketCap</a></li>
+            <li><a href="#">Audit Report</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>$ALPUNCH is a meme coin with no intrinsic value or expectation of financial return. Not financial advice. DYOR. © 2025 Alpha Punch.</p>
+        <div class="footer-social">
+          <a href="#">🐦</a><a href="#">✈️</a><a href="#">💬</a><a href="#">📊</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

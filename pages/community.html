@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Community — Alpha Punch $ALPUNCH</title>
+  <link rel="stylesheet" href="../css/main.css"/>
+  <style>
+    .page-hero {
+      background: radial-gradient(ellipse at 50% 30%, #0d1200 0%, var(--black) 60%);
+      border-bottom: 2px solid var(--border);
+      padding: 6rem 0 5rem;
+      text-align: center;
+    }
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .social-card {
+      background: var(--card);
+      border: 2px solid var(--border);
+      padding: 3rem 2.5rem;
+      text-decoration: none;
+      color: var(--white);
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .social-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .social-card.twitter::before { background: radial-gradient(circle at 0 0, rgba(29,161,242,0.08), transparent 60%); }
+    .social-card.telegram::before { background: radial-gradient(circle at 0 0, rgba(40,167,235,0.08), transparent 60%); }
+    .social-card.discord::before { background: radial-gradient(circle at 0 0, rgba(114,137,218,0.08), transparent 60%); }
+    .social-card.dex::before { background: radial-gradient(circle at 0 0, rgba(255,230,0,0.08), transparent 60%); }
+    .social-card:hover::before { opacity: 1; }
+    .social-card:hover { border-color: var(--yellow); transform: translateY(-5px); }
+    .social-icon { font-size: 3.5rem; flex-shrink: 0; line-height: 1; }
+    .social-info {}
+    .social-name {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      letter-spacing: 0.1em;
+      color: var(--yellow);
+      margin-bottom: 0.5rem;
+    }
+    .social-handle { font-size: 0.72rem; color: var(--muted); margin-bottom: 0.8rem; font-family: var(--font-body); }
+    .social-desc { font-size: 0.78rem; color: #777; line-height: 1.7; }
+    .social-cta {
+      display: inline-block;
+      margin-top: 1.2rem;
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      color: var(--yellow);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .social-cta:hover { border-color: var(--yellow); }
+
+    /* METRICS */
+    .metrics-section { background: var(--dark); border-top: 2px solid var(--border); }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .metric-card {
+      background: var(--card);
+      border: 2px solid var(--border);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+    .metric-card:hover { border-color: var(--yellow); }
+    .metric-val {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--yellow);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .metric-lbl { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 0.5rem; }
+
+    /* HOW TO STAY SAFE */
+    .safety-section { background: var(--black); border-top: 2px solid var(--border); }
+    .warning-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+    .warning-card {
+      padding: 2rem;
+      border: 2px solid;
+      background: var(--card);
+    }
+    .warning-card.danger { border-color: rgba(255,26,26,0.4); }
+    .warning-card.safe { border-color: rgba(0,255,136,0.3); }
+    .warning-card h4 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    .warning-card.danger h4 { color: var(--red); }
+    .warning-card.safe h4 { color: var(--green); }
+    .warning-list { list-style: none; }
+    .warning-list li { font-size: 0.72rem; color: #888; padding: 0.35rem 0; display: flex; gap: 0.6rem; }
+    .warning-list li::before { flex-shrink: 0; }
+    .warning-card.danger .warning-list li::before { content: '✗'; color: var(--red); }
+    .warning-card.safe .warning-list li::before { content: '✓'; color: var(--green); }
+
+    @media (max-width: 800px) {
+      .social-grid { grid-template-columns: 1fr; }
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+      .warning-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="marquee-bar">
+    <div class="marquee-track">
+      <span>🥊 ALPHA PUNCH</span><span>•</span><span>THE HARDEST HITTING COIN IN THE JUNGLE</span><span>•</span>
+      <span>🐒 BUY $ALPUNCH</span><span>•</span><span>TO THE MOON</span><span>•</span>
+      <span>APE IN NOW</span><span>•</span><span>ZERO TAX</span><span>•</span><span>LP BURNED 🔥</span><span>•</span>
+      <span>🥊 ALPHA PUNCH</span><span>•</span><span>THE HARDEST HITTING COIN IN THE JUNGLE</span><span>•</span>
+      <span>🐒 BUY $ALPUNCH</span><span>•</span><span>TO THE MOON</span><span>•</span>
+      <span>APE IN NOW</span><span>•</span><span>ZERO TAX</span><span>•</span><span>LP BURNED 🔥</span><span>•</span>
+    </div>
+  </div>
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">🥊 AlphaPunch</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="tokenomics.html">Tokenomics</a></li>
+      <li><a href="howtobuy.html">How to Buy</a></li>
+      <li><a href="roadmap.html">Roadmap</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="#" class="nav-cta">🥊 Buy Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="../index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="tokenomics.html">Tokenomics</a>
+    <a href="howtobuy.html">How to Buy</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="community.html">Community</a>
+    <a href="#" class="btn btn-primary" style="font-size:1.4rem">🥊 Buy $ALPUNCH</a>
+  </div>
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-tag" style="display:block">// Join the Pack</span>
+      <h1 class="section-title" style="animation:title-slam 0.6s both">THE JUNGLE<br>AWAITS</h1>
+      <div class="section-divider center"></div>
+      <p style="color:var(--muted);font-size:0.85rem;max-width:550px;margin:0 auto">Alpha Punch is nothing without its apes. The community IS the coin. Join every channel, spread the word, and help the monkey punch its way to the moon.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <span class="section-tag reveal">// Official Channels</span>
+      <h2 class="section-title reveal">FIND YOUR PACK</h2>
+      <div class="section-divider reveal"></div>
+      <div class="social-grid">
+
+        <a href="#" class="social-card twitter reveal">
+          <div class="social-icon">🐦</div>
+          <div class="social-info">
+            <div class="social-name">Twitter / X</div>
+            <div class="social-handle">@AlphaPunchCoin</div>
+            <div class="social-desc">Real-time updates, meme drops, announcements, and all the alpha you need. The main channel for news and raids.</div>
+            <span class="social-cta">Follow on X →</span>
+          </div>
+        </a>
+
+        <a href="#" class="social-card telegram reveal reveal-delay-1">
+          <div class="social-icon">✈️</div>
+          <div class="social-info">
+            <div class="social-name">Telegram</div>
+            <div class="social-handle">t.me/AlphaPunchOfficial</div>
+            <div class="social-desc">The heartbeat of the community. 24/7 chat, chart calls, meme sharing, and the fastest breaking news from the jungle.</div>
+            <span class="social-cta">Join Telegram →</span>
+          </div>
+        </a>
+
+        <a href="#" class="social-card discord reveal">
+          <div class="social-icon">💬</div>
+          <div class="social-info">
+            <div class="social-name">Discord</div>
+            <div class="social-handle">discord.gg/alphapunch</div>
+            <div class="social-desc">Deep degen discussions, trading strategy, lore building, and exclusive community events. The jungle HQ.</div>
+            <span class="social-cta">Join Discord →</span>
+          </div>
+        </a>
+
+        <a href="#" class="social-card dex reveal reveal-delay-1">
+          <div class="social-icon">📊</div>
+          <div class="social-info">
+            <div class="social-name">DexScreener</div>
+            <div class="social-handle">Live Chart & Trading</div>
+            <div class="social-desc">Track the $ALPUNCH price live, view all transactions, check liquidity and volume in real time. The source of truth.</div>
+            <span class="social-cta">View Chart →</span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Extra links -->
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:2rem;justify-content:center" class="reveal">
+        <a href="#" style="background:var(--card);border:2px solid var(--border);padding:1rem 2rem;text-decoration:none;color:#888;font-size:0.72rem;letter-spacing:0.1em;transition:all 0.2s" onmouseover="this.style.borderColor='var(--yellow)';this.style.color='var(--yellow)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='#888'">📈 CoinGecko Listing</a>
+        <a href="#" style="background:var(--card);border:2px solid var(--border);padding:1rem 2rem;text-decoration:none;color:#888;font-size:0.72rem;letter-spacing:0.1em;transition:all 0.2s" onmouseover="this.style.borderColor='var(--yellow)';this.style.color='var(--yellow)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='#888'">📉 CoinMarketCap</a>
+        <a href="#" style="background:var(--card);border:2px solid var(--border);padding:1rem 2rem;text-decoration:none;color:#888;font-size:0.72rem;letter-spacing:0.1em;transition:all 0.2s" onmouseover="this.style.borderColor='var(--yellow)';this.style.color='var(--yellow)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='#888'">🔍 Audit Report</a>
+        <a href="#" style="background:var(--card);border:2px solid var(--border);padding:1rem 2rem;text-decoration:none;color:#888;font-size:0.72rem;letter-spacing:0.1em;transition:all 0.2s" onmouseover="this.style.borderColor='var(--yellow)';this.style.color='var(--yellow)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='#888'">📋 Contract on Explorer</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="metrics-section">
+    <div class="container">
+      <span class="section-tag reveal">// The Numbers</span>
+      <h2 class="section-title reveal">COMMUNITY STATS</h2>
+      <div class="section-divider reveal"></div>
+      <div class="metrics-grid reveal">
+        <div class="metric-card">
+          <div class="metric-val"><span data-target="5200" data-suffix="+">5,200+</span></div>
+          <div class="metric-lbl">Holders</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val"><span data-target="12000" data-suffix="+">12K+</span></div>
+          <div class="metric-lbl">Telegram Members</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val"><span data-target="8500" data-suffix="+">8.5K+</span></div>
+          <div class="metric-lbl">Twitter Followers</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val"><span data-target="3200" data-suffix="+">3.2K+</span></div>
+          <div class="metric-lbl">Discord Members</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="safety-section">
+    <div class="container">
+      <span class="section-tag reveal">// Stay Safe Out There</span>
+      <h2 class="section-title reveal">SCAM ALERT 🚨</h2>
+      <div class="section-divider reveal"></div>
+      <p class="reveal" style="color:var(--muted);font-size:0.8rem;max-width:600px;margin-bottom:0.5rem">Meme coins attract scammers. Know what to watch for and how to stay safe in the Alpha Punch community.</p>
+      <div class="warning-grid reveal">
+        <div class="warning-card danger">
+          <h4>⚠️ We Will NEVER Do This</h4>
+          <ul class="warning-list">
+            <li>DM you first asking for money or tokens</li>
+            <li>Ask for your seed phrase or private key</li>
+            <li>Offer guaranteed returns or "pump" signals</li>
+            <li>Ask you to send ETH to "verify" your wallet</li>
+            <li>Run fake giveaways asking you to send first</li>
+            <li>Have "admin" accounts slide into your DMs</li>
+          </ul>
+        </div>
+        <div class="warning-card safe">
+          <h4>✅ Official Alpha Punch Channels</h4>
+          <ul class="warning-list">
+            <li>Always use official links from this website only</li>
+            <li>Verify contract address before any swap</li>
+            <li>Official Telegram only: t.me/AlphaPunchOfficial</li>
+            <li>Official Twitter: @AlphaPunchCoin</li>
+            <li>Report fake accounts to our mods immediately</li>
+            <li>When in doubt, ask in the official Telegram group</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="footer-logo">🥊 ALPHAPUNCH</a>
+          <p>The hardest hitting memecoin in the jungle. Built by degens, for degens. Zero tax. LP burned. Let's go.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="tokenomics.html">Tokenomics</a></li>
+            <li><a href="howtobuy.html">How to Buy</a></li>
+            <li><a href="roadmap.html">Roadmap</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="#">Twitter / X</a></li>
+            <li><a href="#">Telegram</a></li>
+            <li><a href="#">Discord</a></li>
+            <li><a href="community.html">All Links</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contract</h4>
+          <ul>
+            <li><a href="#">DexScreener</a></li>
+            <li><a href="#">CoinGecko</a></li>
+            <li><a href="#">CoinMarketCap</a></li>
+            <li><a href="#">Audit Report</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>$ALPUNCH is a meme coin with no intrinsic value or expectation of financial return. Not financial advice. DYOR. © 2025 Alpha Punch.</p>
+        <div class="footer-social">
+          <a href="#">🐦</a><a href="#">✈️</a><a href="#">💬</a><a href="#">📊</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

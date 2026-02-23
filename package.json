@@ -1,0 +1,16 @@
+{
+  "name": "alphapunch",
+  "version": "1.0.0",
+  "description": "ALPHAPUNCH — The Revenge Memecoin Website",
+  "scripts": {
+    "dev": "npx serve . --port 3000",
+    "build": "echo 'Static site — no build step needed. Deploy the folder directly.'",
+    "deploy:netlify": "npx netlify-cli deploy --prod --dir .",
+    "deploy:vercel": "npx vercel --prod"
+  },
+  "keywords": ["alphapunch", "memecoin", "solana", "website"],
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}

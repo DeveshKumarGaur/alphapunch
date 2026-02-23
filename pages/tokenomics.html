@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tokenomics — Alpha Punch $ALPUNCH</title>
+  <link rel="stylesheet" href="../css/main.css"/>
+  <style>
+    .page-hero {
+      background: radial-gradient(ellipse at 70% 50%, #150500 0%, var(--black) 65%);
+      border-bottom: 2px solid var(--border);
+      padding: 6rem 0 4rem;
+      text-align: center;
+    }
+    /* Big donut-style visual */
+    .token-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin: 4rem 0;
+    }
+    .donut-wrap {
+      position: relative;
+      width: 340px;
+      height: 340px;
+      margin: 0 auto;
+    }
+    .donut-wrap svg { width: 100%; height: 100%; }
+    .donut-center {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .donut-center .big {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--yellow);
+      line-height: 1;
+    }
+    .donut-center .sm {
+      font-size: 0.6rem;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .token-breakdown { display: flex; flex-direction: column; gap: 1.5rem; }
+    .token-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: var(--card);
+      border: 2px solid var(--border);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .token-row:hover { border-color: var(--yellow); transform: translateX(6px); }
+    .token-color-bar {
+      width: 6px;
+      min-height: 60px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .token-info {}
+    .token-pct {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      line-height: 1;
+      letter-spacing: 0.04em;
+    }
+    .token-name {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      color: #888;
+      margin: 0.2rem 0;
+    }
+    .token-desc { font-size: 0.72rem; color: #555; line-height: 1.7; }
+    .token-amount { font-size: 0.65rem; color: var(--green); margin-top: 0.3rem; font-family: var(--font-body); }
+
+    /* Supply stats */
+    .supply-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+    .supply-card {
+      background: var(--card);
+      border: 2px solid var(--border);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .supply-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--yellow), var(--orange));
+    }
+    .supply-card .val {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--yellow);
+      letter-spacing: 0.04em;
+    }
+    .supply-card .lbl { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 0.5rem; }
+
+    .safety-section { background: var(--dark); border-top: 2px solid var(--border); }
+    .safety-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .safety-item {
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      padding: 2rem; background: var(--card); border: 2px solid var(--border);
+      transition: border-color 0.2s;
+    }
+    .safety-item:hover { border-color: var(--green); }
+    .safety-icon { font-size: 2rem; flex-shrink: 0; }
+    .safety-item h4 { font-family: var(--font-heading); font-size: 1.1rem; letter-spacing: 0.1em; color: var(--white); margin-bottom: 0.4rem; }
+    .safety-item p { font-size: 0.72rem; color: #666; line-height: 1.7; }
+
+    @media (max-width: 800px) {
+      .token-visual { grid-template-columns: 1fr; }
+      .supply-grid { grid-template-columns: 1fr; }
+      .safety-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="marquee-bar">
+    <div class="marquee-track">
+      <span>🥊 ALPHA PUNCH</span><span>•</span><span>THE HARDEST HITTING COIN IN THE JUNGLE</span><span>•</span>
+      <span>🐒 BUY $ALPUNCH</span><span>•</span><span>TO THE MOON</span><span>•</span>
+      <span>APE IN NOW</span><span>•</span><span>ZERO TAX</span><span>•</span><span>LP BURNED 🔥</span><span>•</span>
+      <span>🥊 ALPHA PUNCH</span><span>•</span><span>THE HARDEST HITTING COIN IN THE JUNGLE</span><span>•</span>
+      <span>🐒 BUY $ALPUNCH</span><span>•</span><span>TO THE MOON</span><span>•</span>
+      <span>APE IN NOW</span><span>•</span><span>ZERO TAX</span><span>•</span><span>LP BURNED 🔥</span><span>•</span>
+    </div>
+  </div>
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">🥊 AlphaPunch</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="tokenomics.html">Tokenomics</a></li>
+      <li><a href="howtobuy.html">How to Buy</a></li>
+      <li><a href="roadmap.html">Roadmap</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="#" class="nav-cta">🥊 Buy Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="../index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="tokenomics.html">Tokenomics</a>
+    <a href="howtobuy.html">How to Buy</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="community.html">Community</a>
+    <a href="#" class="btn btn-primary" style="font-size:1.4rem">🥊 Buy $ALPUNCH</a>
+  </div>
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-tag" style="display:block">// Follow the Bananas</span>
+      <h1 class="section-title" style="animation:title-slam 0.6s both">TOKENOMICS</h1>
+      <div class="section-divider center"></div>
+      <p style="color:var(--muted);font-size:0.82rem;max-width:500px;margin:0 auto">Simple. Transparent. Built for the community. No tricks, no hidden allocations — just pure alpha.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="supply-grid reveal">
+        <div class="supply-card">
+          <div class="val"><span data-target="1000000000">1,000,000,000</span></div>
+          <div class="lbl">Total Supply</div>
+        </div>
+        <div class="supply-card">
+          <div class="val">0%</div>
+          <div class="lbl">Buy / Sell Tax</div>
+        </div>
+        <div class="supply-card">
+          <div class="val">🔥 100%</div>
+          <div class="lbl">LP Burned</div>
+        </div>
+      </div>
+
+      <div class="token-visual">
+        <div class="donut-wrap reveal">
+          <svg viewBox="0 0 36 36">
+            <!-- 80% yellow -->
+            <circle cx="18" cy="18" r="15.9" fill="none" stroke="#1a1a1a" stroke-width="3.5"/>
+            <circle cx="18" cy="18" r="15.9" fill="none" stroke="#FFE600" stroke-width="3.5"
+              stroke-dasharray="80 20" stroke-dashoffset="25" stroke-linecap="butt"/>
+            <!-- 10% orange -->
+            <circle cx="18" cy="18" r="15.9" fill="none" stroke="#FF6B00" stroke-width="3.5"
+              stroke-dasharray="10 90" stroke-dashoffset="-55" stroke-linecap="butt"/>
+            <!-- 5% red -->
+            <circle cx="18" cy="18" r="15.9" fill="none" stroke="#FF1A1A" stroke-width="3.5"
+              stroke-dasharray="5 95" stroke-dashoffset="-65" stroke-linecap="butt"/>
+            <!-- 5% grey -->
+            <circle cx="18" cy="18" r="15.9" fill="none" stroke="#444" stroke-width="3.5"
+              stroke-dasharray="5 95" stroke-dashoffset="-70" stroke-linecap="butt"/>
+          </svg>
+          <div class="donut-center">
+            <div class="big">1B</div>
+            <div class="sm">$ALPUNCH</div>
+          </div>
+        </div>
+        <div class="token-breakdown reveal">
+          <div class="token-row">
+            <div class="token-color-bar" style="background:var(--yellow)"></div>
+            <div class="token-info">
+              <div class="token-pct" style="color:var(--yellow)">80%</div>
+              <div class="token-name">Liquidity Pool</div>
+              <div class="token-desc">Locked in the DEX and burned to the void. The foundation of the jungle floor — permanent, immovable, unruggable.</div>
+              <div class="token-amount">800,000,000 $ALPUNCH — BURNED 🔥</div>
+            </div>
+          </div>
+          <div class="token-row">
+            <div class="token-color-bar" style="background:var(--orange)"></div>
+            <div class="token-info">
+              <div class="token-pct" style="color:var(--orange)">10%</div>
+              <div class="token-name">Community Treasury</div>
+              <div class="token-desc">Marketing campaigns, viral stunts, influencer partnerships, community rewards, and exchange listings. Run by the apes.</div>
+              <div class="token-amount">100,000,000 $ALPUNCH — Multisig Wallet</div>
+            </div>
+          </div>
+          <div class="token-row">
+            <div class="token-color-bar" style="background:var(--red)"></div>
+            <div class="token-info">
+              <div class="token-pct" style="color:var(--red)">5%</div>
+              <div class="token-name">CEX Listings</div>
+              <div class="token-desc">Reserved for market makers and centralized exchange listing fees. Getting Alpha Punch on every screen in crypto.</div>
+              <div class="token-amount">50,000,000 $ALPUNCH — Locked</div>
+            </div>
+          </div>
+          <div class="token-row">
+            <div class="token-color-bar" style="background:#555"></div>
+            <div class="token-info">
+              <div class="token-pct" style="color:#777">5%</div>
+              <div class="token-name">Team & Development</div>
+              <div class="token-desc">Locked for 12 months, then vested linearly over 12 months. The builders are in it for the long haul.</div>
+              <div class="token-amount">50,000,000 $ALPUNCH — 12mo lock + 12mo vest</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="safety-section">
+    <div class="container">
+      <span class="section-tag reveal">// Security & Transparency</span>
+      <h2 class="section-title reveal">SAFU AS IT GETS</h2>
+      <div class="section-divider reveal"></div>
+      <div class="safety-grid">
+        <div class="safety-item reveal">
+          <div class="safety-icon">🔒</div>
+          <div>
+            <h4>Contract Renounced</h4>
+            <p>Ownership of the smart contract has been permanently renounced. No developer can ever modify, pause, or exploit the contract.</p>
+          </div>
+        </div>
+        <div class="safety-item reveal reveal-delay-1">
+          <div class="safety-icon">🔥</div>
+          <div>
+            <h4>Liquidity Burned</h4>
+            <p>100% of LP tokens sent to the burn address. There is no liquidity to pull. The rug was the plan we never had.</p>
+          </div>
+        </div>
+        <div class="safety-item reveal reveal-delay-2">
+          <div class="safety-icon">🔍</div>
+          <div>
+            <h4>Audited Contract</h4>
+            <p>Smart contract fully audited by independent security researchers. Audit report publicly available for all to verify.</p>
+          </div>
+        </div>
+        <div class="safety-item reveal reveal-delay-3">
+          <div class="safety-icon">📊</div>
+          <div>
+            <h4>On-Chain Transparency</h4>
+            <p>Every wallet, every transaction, every token movement is public on-chain. Nothing is hidden, everything is verifiable.</p>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:3.5rem" class="reveal">
+        <a href="howtobuy.html" class="btn btn-primary">🥊 Buy $ALPUNCH Now</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="footer-logo">🥊 ALPHAPUNCH</a>
+          <p>The hardest hitting memecoin in the jungle. Built by degens, for degens. Zero tax. LP burned. Let's go.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="tokenomics.html">Tokenomics</a></li>
+            <li><a href="howtobuy.html">How to Buy</a></li>
+            <li><a href="roadmap.html">Roadmap</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="#">Twitter / X</a></li>
+            <li><a href="#">Telegram</a></li>
+            <li><a href="#">Discord</a></li>
+            <li><a href="community.html">All Links</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contract</h4>
+          <ul>
+            <li><a href="#">DexScreener</a></li>
+            <li><a href="#">CoinGecko</a></li>
+            <li><a href="#">CoinMarketCap</a></li>
+            <li><a href="#">Audit Report</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>$ALPUNCH is a meme coin with no intrinsic value or expectation of financial return. Not financial advice. DYOR. © 2025 Alpha Punch.</p>
+        <div class="footer-social">
+          <a href="#">🐦</a><a href="#">✈️</a><a href="#">💬</a><a href="#">📊</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>
